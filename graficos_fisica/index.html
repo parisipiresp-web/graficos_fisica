@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Graficos - Fisica</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <h1>Painel de Graficos de Fisica</h1>
+    <p>Selecione o tipo de lancamento e depois escolha o grafico.</p>
+  </header>
+
+  <main class="layout">
+    <section class="main-buttons" aria-label="Tipos de lancamento">
+      <button id="btn-obliquo-max" class="main-btn active">Lancamento Obliquo - Altura Maxima</button>
+      <button id="btn-obliquo-metade" class="main-btn">Lancamento Obliquo - Metade da Altura</button>
+      <button id="btn-queda-livre" class="main-btn">Queda Livre</button>
+    </section>
+
+    <section class="panel-wrap">
+      <article id="panel-obliquo-max" class="panel active">
+        <h2>Lancamento Obliquo - Altura Maxima</h2>
+        <p class="hint">Dados carregados do arquivo .py. Clique em um botao para abrir o grafico.</p>
+
+        <div class="graph-buttons" id="graph-buttons-max">
+          <button data-graph="x_t">Espaco x em funcao de t</button>
+          <button data-graph="y_t">Espaco y em funcao de t</button>
+          <button data-graph="y_x">Espaco y em funcao de x</button>
+          <button data-graph="vx_t">Velocidade x em funcao de t</button>
+          <button data-graph="vy_t">Velocidade y em funcao de t</button>
+          <button data-graph="ax_t">Aceleracao x em funcao de t</button>
+          <button data-graph="ay_t">Aceleracao y em funcao de t</button>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-meta">
+            <h3 id="chart-title">Aguardando selecao de grafico</h3>
+            <p id="chart-desc">Escolha um grafico para visualizar os dados.</p>
+            <div id="chart-stats" class="stats"></div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="mainChart"></canvas>
+          </div>
+        </div>
+      </article>
+
+      <article id="panel-obliquo-metade" class="panel">
+        <h2>Lancamento Obliquo - Metade da Altura</h2>
+        <p class="placeholder">Aguardando valores para criar os graficos deste tipo de lancamento.</p>
+      </article>
+
+      <article id="panel-queda-livre" class="panel">
+        <h2>Queda Livre</h2>
+        <p class="placeholder">Aguardando valores para criar os graficos deste tipo de lancamento.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
