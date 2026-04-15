@@ -98,12 +98,6 @@ function parseRawTable(rawText, columns) {
   return rows;
 }
 
-function extractRawBlock(fileContent, varName) {
-  const pattern = new RegExp(`${varName}\\s*=\\s*\"\"\"([\\s\\S]*?)\"\"\"`);
-  const match = fileContent.match(pattern);
-  return match ? match[1] : null;
-}
-
 function computeStats(values) {
   const valid = values.filter((v) => Number.isFinite(v));
   if (!valid.length) {
@@ -231,21 +225,10 @@ function drawGraph(graphId) {
 }
 
 async function loadDataFromJsFile() {
-  let data = window.PHYSICS_DATA || null;
+  const data = window.PHYSICS_DATA || null;
 
   if (!data) {
-    try {
-      const resp = await fetch("data.json", { cache: "no-store" });
-      if (resp.ok) {
-        data = await resp.json();
-      }
-    } catch (_) {
-      data = null;
-    }
-  }
-
-  if (!data) {
-    throw new Error("Nao foi possivel carregar data.json");
+    throw new Error("Nao foi possivel carregar os dados de data.js");
   }
 
   const rawPos = data.raw_pos;
@@ -284,7 +267,7 @@ function showError(message) {
   panel.innerHTML = `
     <h2>Lancamento Obliquo - Altura Maxima</h2>
     <p class="placeholder">Erro ao carregar dados: ${message}</p>
-    <p class="placeholder">Abra a pasta com um servidor local (por exemplo, Five Server) e tente novamente.</p>
+    <p class="placeholder">Verifique se data.js esta carregando corretamente e tente novamente.</p>
   `;
 }
 
