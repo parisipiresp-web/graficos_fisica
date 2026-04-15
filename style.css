@@ -42,6 +42,7 @@ body {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 14px;
+  align-items: start;
 }
 
 .main-buttons {
@@ -172,7 +173,7 @@ body {
 
 .canvas-wrap {
   padding: 10px;
-  height: 520px;
+  height: clamp(320px, 58vh, 520px);
 }
 
 .placeholder {
@@ -190,10 +191,127 @@ body {
   }
 
   .canvas-wrap {
-    height: 420px;
+    height: clamp(300px, 52vh, 420px);
+  }
+
+  .graph-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .main-buttons {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+    scroll-snap-type: x proximity;
+  }
+
+  .main-btn {
+    min-width: 220px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 20px 14px 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.35rem, 7vw, 1.9rem);
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .layout {
+    width: min(100%, 100vw);
+    margin: 10px auto 18px;
+    gap: 10px;
+  }
+
+  .panel,
+  .main-buttons {
+    border-radius: 14px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .chart-meta {
+    padding: 12px;
+  }
+
+  .chart-meta p {
+    font-size: 0.94rem;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .stats span {
+    font-size: 0.82rem;
+    padding: 4px 8px;
+  }
+
+  .graph-buttons button,
+  .main-btn {
+    font-size: 0.95rem;
+  }
+
+  .canvas-wrap {
+    padding: 8px;
+    height: clamp(280px, 48vh, 360px);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    text-align: left;
+  }
+
+  .layout {
+    width: calc(100vw - 16px);
+  }
+
+  .main-buttons {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .main-btn {
+    min-width: 180px;
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .panel h2,
+  .chart-meta h3 {
+    font-size: 1.05rem;
+  }
+
+  .hint,
+  .placeholder {
+    font-size: 0.92rem;
   }
 
   .graph-buttons {
     grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .graph-buttons button {
+    padding: 9px;
+  }
+
+  .chart-card {
+    margin-top: 12px;
+  }
+
+  .canvas-wrap {
+    height: clamp(260px, 46vh, 320px);
   }
 }
